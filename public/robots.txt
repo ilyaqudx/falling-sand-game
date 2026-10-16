@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://falling-sand-game.vercel.app/sitemap.xml
+Sitemap: https://falling-sand-game-one.vercel.app/sitemap.xml
