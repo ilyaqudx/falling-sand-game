@@ -1,6 +1,68 @@
 import { ELEMENTS } from './physics-engine.js';
 
 export const PRESETS = {
+  streams: {
+    name: '🔀 5 Flowing Streams (Default)',
+    desc: '5 continuous flowing materials deflected by angled stone slides and funnels',
+    load(sim) {
+      sim.clear();
+      sim.emittersActive = true;
+      const W = sim.width;
+      const H = sim.height;
+
+      // 1. Deflector ramp beneath Stream 1 (Water, x=28)
+      // Slanted stone slide guiding water rightwards toward Sand stream
+      for (let i = 0; i < 32; i++) {
+        const x = 18 + i;
+        const y = 32 + Math.floor(i * 0.7);
+        sim.set(x, y, ELEMENTS.STONE);
+        sim.set(x, y + 1, ELEMENTS.STONE);
+      }
+
+      // 2. Deflector ramp beneath Stream 2 (Sand, x=64)
+      // Angled slide catching sand & deflecting left into a chute
+      for (let i = 0; i < 28; i++) {
+        const x = 76 - i;
+        const y = 62 + Math.floor(i * 0.6);
+        sim.set(x, y, ELEMENTS.STONE);
+        sim.set(x, y + 1, ELEMENTS.STONE);
+      }
+
+      // 3. V-Funnel beneath Stream 3 (Lava, x=100)
+      // Funnel guiding molten lava into a narrow cascade
+      for (let i = 0; i < 18; i++) {
+        sim.set(90 + i, 36 + i, ELEMENTS.STONE);
+        sim.set(90 + i, 37 + i, ELEMENTS.STONE);
+        sim.set(110 - i, 36 + i, ELEMENTS.STONE);
+        sim.set(110 - i, 37 + i, ELEMENTS.STONE);
+      }
+
+      // 4. Glass ramp beneath Stream 4 (Acid, x=136)
+      // Smooth transparent ramp redirecting acid towards a stone block to show chemical corrosion!
+      for (let i = 0; i < 26; i++) {
+        const x = 124 + i;
+        const y = 48 + Math.floor(i * 0.6);
+        sim.set(x, y, ELEMENTS.GLASS);
+        sim.set(x, y + 1, ELEMENTS.GLASS);
+      }
+      // Target stone block to demonstrate dissolution
+      for (let y = 70; y < 86; y++) {
+        for (let x = 142; x < 158; x++) {
+          sim.set(x, y, ELEMENTS.STONE);
+        }
+      }
+
+      // 5. Plant terrace beneath Stream 5 (Oil, x=172)
+      // Catch oil on a plant shelf
+      for (let x = 158; x < 188; x++) {
+        sim.set(x, 58, ELEMENTS.PLANT);
+        sim.set(x, 59, ELEMENTS.PLANT);
+      }
+      sim.set(188, 56, ELEMENTS.PLANT);
+      sim.set(188, 57, ELEMENTS.PLANT);
+    }
+  },
+
   volcano: {
     name: '🌋 Volcano Eruption',
     desc: 'Lava chamber trapped beneath stone peak with gunpowder fuse',

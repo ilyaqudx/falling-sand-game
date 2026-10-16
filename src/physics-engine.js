@@ -46,6 +46,18 @@ export class SandboxSimulation {
     this.paused = false;
     this.particleCount = 0;
 
+    // 5 continuous default stream emitters spaced across the top
+    this.emittersActive = true;
+    this.emitterRate = 2; // emit every 2 ticks
+    this.tickCount = 0;
+    this.emitters = [
+      { id: 0, x: 28, elem: ELEMENTS.WATER, name: 'Water', active: true, color: [59, 130, 246] },
+      { id: 1, x: 64, elem: ELEMENTS.SAND, name: 'Sand', active: true, color: [228, 185, 87] },
+      { id: 2, x: 100, elem: ELEMENTS.LAVA, name: 'Lava', active: true, color: [239, 68, 68] },
+      { id: 3, x: 136, elem: ELEMENTS.ACID, name: 'Acid', active: true, color: [163, 230, 53] },
+      { id: 4, x: 172, elem: ELEMENTS.OIL, name: 'Oil', active: true, color: [161, 98, 7] }
+    ];
+
     // Random noise texture for realistic visual grains
     for (let i = 0; i < this.size; i++) {
       this.shades[i] = Math.floor(Math.random() * 28) - 14;
@@ -116,8 +128,56 @@ export class SandboxSimulation {
     this.particleCount = 0;
   }
 
+  // Continuously emit 5 material streams according to gravity direction
+  emitStreams() {
+    const isDown = this.gravity >= 0;
+    const isUp = this.gravity === -1;
+
+    for (const em of this.emitters) {
+      if (!em.active) continue;
+
+      const baseX = em.x;
+      const elem = em.elem;
+
+      // Spawn Y position according to gravity direction
+      let startY;
+      if (isDown) {
+        startY = 2;
+      } else if (isUp) {
+        startY = this.height - 3;
+      } else {
+        startY = Math.floor(this.height / 2);
+      }
+
+      // Emit 1-2 particles per stream with slight jitter for a continuous natural flow
+      const count = Math.random() < 0.75 ? 2 : 1;
+      for (let p = 0; p < count; p++) {
+        const offset = Math.floor(Math.random() * 3) - 1; // -1, 0, 1
+        const px = baseX + offset;
+        const py = startY + (isDown ? Math.floor(Math.random() * 2) : (isUp ? -Math.floor(Math.random() * 2) : 0));
+
+        if (px >= 0 && px < this.width && py >= 0 && py < this.height) {
+          const cur = this.get(px, py);
+          if (cur === ELEMENTS.EMPTY || cur === ELEMENTS.SMOKE || cur === ELEMENTS.STEAM) {
+            let initialLife = 0;
+            if (elem === ELEMENTS.FIRE) initialLife = 35 + Math.floor(Math.random() * 25);
+            if (elem === ELEMENTS.ACID) initialLife = 120;
+            if (elem === ELEMENTS.LAVA) initialLife = 80;
+            this.set(px, py, elem, initialLife);
+          }
+        }
+      }
+    }
+  }
+
   step() {
     this.updated.fill(0);
+    this.tickCount++;
+
+    if (this.emittersActive && (this.tickCount % this.emitterRate === 0)) {
+      this.emitStreams();
+    }
+
     let count = 0;
 
     const yStart = this.gravity >= 0 ? this.height - 1 : 0;
@@ -446,6 +506,30 @@ export class SandboxSimulation {
         data[pIdx + 1] = Math.max(0, Math.min(255, def.color[1] + shade));
         data[pIdx + 2] = Math.max(0, Math.min(255, def.color[2] + shade));
         data[pIdx + 3] = def.color[3];
+      }
+    }
+
+    // Render emitter dispenser nozzles at edge of canvas
+    if (this.emittersActive) {
+      const isDown = this.gravity >= 0;
+      const isUp = this.gravity === -1;
+      const nozzleYStart = isDown ? 0 : (isUp ? this.height - 2 : Math.floor(this.height / 2) - 1);
+
+      for (const em of this.emitters) {
+        if (!em.active) continue;
+        const col = em.color;
+        for (let ny = 0; ny < 2; ny++) {
+          const cy = nozzleYStart + ny;
+          if (cy < 0 || cy >= this.height) continue;
+          for (let nx = em.x - 2; nx <= em.x + 2; nx++) {
+            if (nx < 0 || nx >= this.width) continue;
+            const pIdx = (cy * this.width + nx) * 4;
+            data[pIdx] = col[0];
+            data[pIdx + 1] = col[1];
+            data[pIdx + 2] = col[2];
+            data[pIdx + 3] = 255;
+          }
+        }
       }
     }
   }

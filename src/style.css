@@ -226,6 +226,63 @@ body {
   border-color: var(--accent-amber);
 }
 
+.tool-btn.active-stream {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #93c5fd;
+}
+
+/* Continuous Streams Guidance Banner */
+.streams-guide-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: rgba(24, 24, 27, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+}
+
+.streams-legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.legend-badge {
+  font-weight: 700;
+  color: var(--accent-amber);
+}
+
+.stream-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.stream-pill.stream-water { color: #60a5fa; border-color: rgba(59, 130, 246, 0.4); }
+.stream-pill.stream-sand { color: #facc15; border-color: rgba(234, 179, 8, 0.4); }
+.stream-pill.stream-lava { color: #f87171; border-color: rgba(239, 68, 68, 0.4); }
+.stream-pill.stream-acid { color: #a3e635; border-color: rgba(163, 230, 53, 0.4); }
+.stream-pill.stream-oil { color: #fbbf24; border-color: rgba(217, 119, 6, 0.4); }
+
+.streams-tip {
+  color: #a1a1aa;
+  font-size: 0.78rem;
+}
+
+.streams-tip b {
+  color: #fff;
+}
+
 /* Canvas Container */
 .canvas-container {
   position: relative;

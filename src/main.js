@@ -18,6 +18,9 @@ const containerEl = document.getElementById('canvas-container');
 const fpsCounterEl = document.getElementById('fps-counter');
 const particleCounterEl = document.getElementById('particle-counter');
 
+const btnEmittersEl = document.getElementById('btn-emitters');
+const emittersIconEl = document.getElementById('emitters-icon');
+const emittersTextEl = document.getElementById('emitters-text');
 const btnPauseEl = document.getElementById('btn-pause');
 const pauseIconEl = document.getElementById('pause-icon');
 const pauseTextEl = document.getElementById('pause-text');
@@ -234,6 +237,14 @@ btnClearEl.addEventListener('click', () => {
   sim.clear();
 });
 
+// Toggle 5 Continuous Streams Emitters
+btnEmittersEl.addEventListener('click', () => {
+  sim.emittersActive = !sim.emittersActive;
+  emittersIconEl.textContent = sim.emittersActive ? '🚰' : '🚫';
+  emittersTextEl.textContent = sim.emittersActive ? 'Streams: ON' : 'Streams: OFF';
+  btnEmittersEl.classList.toggle('active-stream', sim.emittersActive);
+});
+
 // Presets Loader
 selectPresetEl.addEventListener('change', (e) => {
   const key = e.target.value;
@@ -303,8 +314,8 @@ function loop(currentTime) {
 // Window resize listener to keep cursor scaled
 window.addEventListener('resize', updateCursorSize);
 
-// Start with Volcano preset
+// Start with 5 continuous streams preset
 initElementPalette();
 updateCursorSize();
-PRESETS.volcano.load(sim);
+PRESETS.streams.load(sim);
 requestAnimationFrame(loop);

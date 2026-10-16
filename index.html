@@ -173,6 +173,10 @@
         <!-- Top Simulation Control Toolbar -->
         <div class="sim-controls-bar">
           <div class="controls-left">
+            <button id="btn-emitters" class="tool-btn active-stream" title="Toggle 5 Continuous Streams Flowing">
+              <span id="emitters-icon">🚰</span>
+              <span id="emitters-text">Streams: ON</span>
+            </button>
             <button id="btn-pause" class="tool-btn" title="Pause / Resume (Spacebar)">
               <span id="pause-icon">⏸️</span>
               <span id="pause-text">Pause</span>
@@ -192,12 +196,27 @@
           <div class="controls-right">
             <label for="select-preset" class="preset-label">Preset:</label>
             <select id="select-preset" class="preset-select">
-              <option value="">-- Choose Preset --</option>
+              <option value="streams" selected>🔀 5 Flowing Streams (Default)</option>
               <option value="volcano">🌋 Volcano Eruption</option>
               <option value="dam">🌊 Hydro Dam & River</option>
               <option value="acidLab">🧪 Acid Reaction Lab</option>
               <option value="hourglass">⏳ Classic Hourglass</option>
             </select>
+          </div>
+        </div>
+
+        <!-- Continuous Streams Guidance Banner -->
+        <div class="streams-guide-bar">
+          <div class="streams-legend">
+            <span class="legend-badge">🚰 5 Live Streams:</span>
+            <span class="stream-pill stream-water">💧 Water</span>
+            <span class="stream-pill stream-sand">⏳ Sand</span>
+            <span class="stream-pill stream-lava">🌋 Lava</span>
+            <span class="stream-pill stream-acid">🧪 Acid</span>
+            <span class="stream-pill stream-oil">🛢️ Oil</span>
+          </div>
+          <div class="streams-tip">
+            👉 Paint <b>🪨 Stone</b> or <b>🪟 Glass</b> slides to deflect, funnel & redirect their paths!
           </div>
         </div>
 
