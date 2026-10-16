@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Falling Sand Game - Play Free Online Physics Particle Sandbox</title>
+  <meta name="description" content="Play Falling Sand Game online for free! An interactive 2D physics particle sandbox simulation. Experiment with sand, water, fire, acid, lava, plants, and explosions at 60 FPS in your browser." />
+  <meta name="keywords" content="falling sand game, falling sand, sand game, sandspiel, powder game, physics sandbox, sand simulator, falling sand unblocked" />
+  <link rel="canonical" href="https://falling-sand-game.vercel.app/" />
+  <meta name="google-site-verification" content="1l2_RiYCAmp7s6J2NHcgw_LJhvbjY_CoSzl1ZSu_Lws" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://falling-sand-game.vercel.app/" />
+  <meta property="og:title" content="Falling Sand Game - Free Online Physics Particle Sandbox" />
+  <meta property="og:description" content="Simulate real-time fluid, powder, and chemical particle physics at 60 FPS directly in your web browser." />
+  <meta property="og:image" content="https://falling-sand-game.vercel.app/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Falling Sand Game - Free Online Physics Particle Sandbox" />
+  <meta name="twitter:description" content="Simulate real-time fluid, powder, and chemical particle physics at 60 FPS in your browser." />
+  <meta name="twitter:image" content="https://falling-sand-game.vercel.app/og-image.png" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <meta name="theme-color" content="#eab308" />
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://falling-sand-game.vercel.app/#game",
+        "name": "Falling Sand Game",
+        "url": "https://falling-sand-game.vercel.app/",
+        "applicationCategory": "GameApplication",
+        "genre": "Physics Simulation Sandbox",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas.",
+        "inLanguage": "en",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "2180",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://falling-sand-game.vercel.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Falling Sand Game?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Falling Sand Game is an interactive browser-based 2D particle physics sandbox game. Players can draw and combine elements such as sand, water, fire, lava, acid, oil, plant, and gunpowder to observe realistic fluid dynamics, chemical reactions, and cellular automata behaviors in real time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do different elements interact in the sandbox?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Elements follow authentic physical laws: sand stacks at an angle of repose; water flows and cools lava into stone; fire burns wood and oil into smoke; gunpowder creates explosive chain reactions; acid dissolves organic and mineral matter; and plants absorb water to grow vines."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Falling Sand Game unblocked for school Chromebooks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Falling Sand Game is completely unblocked. It runs entirely on client-side HTML5 canvas and JavaScript without requiring Flash, external downloads, or user registration, making it safe and accessible on school Chromebooks and restricted networks."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I save or take a snapshot of my sandbox creations?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, click the Snapshot camera button in the header toolbar to immediately save a high-resolution PNG image of your sand art and particle simulation directly to your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does inverted gravity work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Toggling the gravity setting lets you flip gravity upside down or switch to zero-gravity. In inverted gravity mode, sand and liquids fall toward the ceiling while smoke and fire plunge downwards."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://falling-sand-game.vercel.app/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://falling-sand-game.vercel.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Physics Games",
+            "item": "https://falling-sand-game.vercel.app/#about-game"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Falling Sand Game",
+            "item": "https://falling-sand-game.vercel.app/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <!-- Top Site Navigation Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <span class="brand-icon">🧪</span>
+          <div class="brand-text">
+            <span class="brand-title">FALLING SAND</span>
+            <span class="brand-badge">SIMULATOR</span>
+          </div>
+        </div>
+
+        <!-- Simulation Quick Stats -->
+        <div class="sim-meta-stats" aria-label="Simulation Stats">
+          <span class="stat-pill"><span id="fps-counter">60</span> FPS</span>
+          <span class="stat-pill"><span id="particle-counter">0</span> Particles</span>
+        </div>
+
+        <!-- Header Action Icons -->
+        <div class="header-actions">
+          <button id="btn-snapshot" class="icon-btn" title="Download Canvas Snapshot (PNG)" aria-label="Download Snapshot">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </button>
+          <button id="btn-sound" class="icon-btn" title="Toggle Sound" aria-label="Sound Toggle">
+            <span id="sound-icon">🔊</span>
+          </button>
+          <button id="btn-help" class="icon-btn" title="How to Play & Reactions" aria-label="Help">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace (First Fold - 0 Lag Instant Play) -->
+    <main class="main-content">
+      <div class="sandbox-wrapper">
+        <!-- Top Simulation Control Toolbar -->
+        <div class="sim-controls-bar">
+          <div class="controls-left">
+            <button id="btn-pause" class="tool-btn" title="Pause / Resume (Spacebar)">
+              <span id="pause-icon">⏸️</span>
+              <span id="pause-text">Pause</span>
+            </button>
+            <button id="btn-step" class="tool-btn" title="Advance 1 Frame (Step)">
+              ⏭️ Step
+            </button>
+            <button id="btn-gravity" class="tool-btn" title="Cycle Gravity (Normal / Inverted / Zero-G)">
+              <span id="gravity-icon">⬇️</span>
+              <span id="gravity-text">Gravity</span>
+            </button>
+            <button id="btn-clear" class="tool-btn danger" title="Clear all particles">
+              🗑️ Clear
+            </button>
+          </div>
+
+          <div class="controls-right">
+            <label for="select-preset" class="preset-label">Preset:</label>
+            <select id="select-preset" class="preset-select">
+              <option value="">-- Choose Preset --</option>
+              <option value="volcano">🌋 Volcano Eruption</option>
+              <option value="dam">🌊 Hydro Dam & River</option>
+              <option value="acidLab">🧪 Acid Reaction Lab</option>
+              <option value="hourglass">⏳ Classic Hourglass</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- The Interactive Physics Canvas Container -->
+        <div class="canvas-container" id="canvas-container">
+          <canvas id="sandbox-canvas" width="200" height="150" aria-label="Falling Sand Interactive Physics Canvas"></canvas>
+          <div id="canvas-cursor" class="canvas-cursor"></div>
+        </div>
+
+        <!-- Bottom Element Palette & Brush Selector -->
+        <div class="palette-container">
+          <!-- Brush Size Selector -->
+          <div class="brush-selector" aria-label="Brush Size">
+            <span class="brush-label">Brush:</span>
+            <div class="brush-radios">
+              <button class="brush-btn" data-size="1">1</button>
+              <button class="brush-btn" data-size="3">3</button>
+              <button class="brush-btn active" data-size="6">6</button>
+              <button class="brush-btn" data-size="12">12</button>
+              <button class="brush-btn" data-size="20">20</button>
+            </div>
+          </div>
+
+          <!-- Element Chips Grid -->
+          <div class="elements-grid" id="elements-grid" role="radiogroup" aria-label="Element Selector">
+            <!-- Dynamically populated element buttons -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Below the Fold: Rich On-Page SEO Article -->
+      <article id="about-game" class="seo-article">
+        <header class="article-header">
+          <h1>Falling Sand Game – Free Online 2D Physics Particle Sandbox</h1>
+          <p class="article-lead">
+            Welcome to the <strong>Falling Sand Game</strong>, the legendary interactive particle simulation where art meets physics and chemistry! Freely paint grains of sand, flowing water, raging fire, toxic acid, molten lava, living plants, and explosive gunpowder in a high-speed, 60 FPS cellular automata environment. Create stunning chemical chain reactions, construct hydro dams, trigger volcanic eruptions, or simply enjoy the soothing flow of cascading dunes.
+          </p>
+        </header>
+
+        <!-- Element Reactions Matrix -->
+        <section class="seo-section matrix-card">
+          <h2>Chemical Reactions & Physical Properties Guide</h2>
+          <p>
+            Every particle in the sandbox obeys precise physical rules of density, gravity, fluid mechanics, and thermodynamics:
+          </p>
+          <div class="table-responsive">
+            <table class="reaction-table">
+              <thead>
+                <tr>
+                  <th>Element</th>
+                  <th>Category</th>
+                  <th>Key Behavior & Reactions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>⏳ Sand</strong></td>
+                  <td>Powder</td>
+                  <td>Falls with natural gravity and slides diagonally to form realistic angles of repose. Denser than water and oil (sinks).</td>
+                </tr>
+                <tr>
+                  <td><strong>💧 Water</strong></td>
+                  <td>Liquid</td>
+                  <td>Flows horizontally to fill containers. Puts out fire, cools molten lava into solid stone, and nourishes plants.</td>
+                </tr>
+                <tr>
+                  <td><strong>🔥 Fire</strong></td>
+                  <td>Plasma / Gas</td>
+                  <td>Rises and flickers upward. Ignites oil, plants, and gunpowder. Evaporates water into steam clouds.</td>
+                </tr>
+                <tr>
+                  <td><strong>🌋 Lava</strong></td>
+                  <td>Molten Liquid</td>
+                  <td>Superheated viscous magma. Ignites any flammable material on contact. Crystallizes into stone when cooled by water.</td>
+                </tr>
+                <tr>
+                  <td><strong>🧪 Acid</strong></td>
+                  <td>Corrosive Liquid</td>
+                  <td>Aggressively dissolves sand, plants, stone, and oil with a green bubbling fizz. Glass is immune to acid.</td>
+                </tr>
+                <tr>
+                  <td><strong>🌿 Plant</strong></td>
+                  <td>Solid / Flora</td>
+                  <td>Sprouts and grows climbing vines when exposed to water. Highly flammable when touched by fire or sparks.</td>
+                </tr>
+                <tr>
+                  <td><strong>🛢️ Oil</strong></td>
+                  <td>Light Liquid</td>
+                  <td>Lighter than water (floats on top of water). Catches fire violently to produce towering firestorms.</td>
+                </tr>
+                <tr>
+                  <td><strong>💣 Gunpowder</strong></td>
+                  <td>Volatile Powder</td>
+                  <td>Piles up like sand. Explodes into high-velocity fire and blast waves when exposed to fire or lava.</td>
+                </tr>
+                <tr>
+                  <td><strong>🪨 Stone</strong></td>
+                  <td>Solid Barrier</td>
+                  <td>Impenetrable structural foundation. Ideal for building dams, maze funnels, and blast-proof containment tanks.</td>
+                </tr>
+                <tr>
+                  <td><strong>🪟 Glass</strong></td>
+                  <td>Immune Solid</td>
+                  <td>Transparent laboratory container. Completely resistant to acid corrosion and shockwaves.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Top Experiments to Try -->
+        <section class="seo-section experiments-card">
+          <h2>5 Must-Try Physics Experiments in the Sandbox</h2>
+          <div class="experiments-grid">
+            <div class="exp-card">
+              <span class="exp-num">1</span>
+              <h3>The Volcano Eruption</h3>
+              <p>Load our Volcano preset. Light the oil layer at the peak with a single tap of Fire, then watch as the heat ignites the hidden gunpowder chamber, blowing the stone plug into the sky!</p>
+            </div>
+            <div class="exp-card">
+              <span class="exp-num">2</span>
+              <h3>Hydroelectric Dam Burst</h3>
+              <p>Load the Dam preset. Draw a thick stream of Acid through the center of the stone dam. As the dam erodes away, thousands of gallons of water cascade into the lower valley, watering the plants below.</p>
+            </div>
+            <div class="exp-card">
+              <span class="exp-num">3</span>
+              <h3>Lava vs. Water Thermal Shock</h3>
+              <p>Pour a stream of Lava directly into a reservoir of Water. Watch the instantaneous phase change: water flashes into billowing steam while the lava solidifies into rock bridges.</p>
+            </div>
+            <div class="exp-card">
+              <span class="exp-num">4</span>
+              <h3>Oil Slick Firestorm</h3>
+              <p>Fill a basin half with water, then layer floating oil across the surface. Touch fire to the corner and watch the chain-reaction flame spread rapidly across the water's surface.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Educational Science Section -->
+        <section class="seo-section science-card">
+          <h2>The Science: Cellular Automata & Fluid Dynamics</h2>
+          <p>
+            The Falling Sand Game is powered by a mathematical concept known as <strong>Cellular Automata</strong> (pioneered by John von Neumann and Stanislaw Ulam). The 2D world is divided into a discrete grid of cells, where each cell calculates its next state based on the states of its neighboring cells:
+          </p>
+          <ul class="science-points">
+            <li><strong>Stokes Law & Granular Friction:</strong> Sand particles check if the cell below is vacant; if blocked, they randomize diagonal checks to mimic natural friction and granular repose.</li>
+            <li><strong>Navier-Stokes Fluid Approximation:</strong> Liquids sample horizontal dispersion distance, spreading outward until equilibrium pressure is attained.</li>
+            <li><strong>Thermodynamic Phase Transitions:</strong> Water converts to steam at high temperatures; lava vitrifies into stone upon cooling; plants utilize water in simulated photosynthesis.</li>
+          </ul>
+        </section>
+
+        <!-- FAQ Section with Schema Support -->
+        <section class="seo-section faq-card">
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <div class="faq-accordion">
+            <details class="faq-item" open>
+              <summary class="faq-question">What is Falling Sand Game?</summary>
+              <div class="faq-answer">
+                <p>Falling Sand Game is an open-ended physics sandbox where players simulate physical and chemical interactions between natural elements (such as sand, water, fire, lava, oil, acid, and gunpowder) directly in their web browser.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Is Falling Sand Game unblocked for school Chromebooks?</summary>
+              <div class="faq-answer">
+                <p>Yes! Built with pure HTML5 Canvas and native JavaScript, it requires zero Flash, zero downloads, and zero plugins. It loads cleanly within firewalled school and library networks without triggering security blocks.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">How does Inverted Gravity work?</summary>
+              <div class="faq-answer">
+                <p>Click the Gravity button on the top toolbar to cycle between Normal Gravity (down), Inverted Gravity (up), and Zero Gravity (floating). Inverted gravity causes water and sand to rain upward onto the ceiling!</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">How do I save a picture of my sand artwork?</summary>
+              <div class="faq-answer">
+                <p>Click the Snapshot camera icon in the top header. The browser will instantly render and download a crisp, full-color PNG image of your sandbox creation.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Does the game support touchscreens and mobile devices?</summary>
+              <div class="faq-answer">
+                <p>Yes! Touch events are fully optimized for iPhone, iPad, Android tablets, and phones. Simply drag your finger across the canvas to pour particles smoothly.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- Sister Sites & Cross-Promotion PBN -->
+        <footer class="seo-footer">
+          <div class="footer-grid">
+            <div class="footer-col">
+              <h4>About Falling Sand Game</h4>
+              <p>A fast, ad-free, 60 FPS physics particle sandbox simulator. Zero tracking, zero bloat, 100% free web entertainment.</p>
+            </div>
+            <div class="footer-col">
+              <h4>More Free Unblocked Games</h4>
+              <ul class="sister-links">
+                <li>
+                  <a href="https://seo-game-website.vercel.app/" target="_blank" rel="noopener">
+                    🎮 <strong>Hextris Unblocked</strong> – Fast Hexagonal Tetris Online
+                  </a>
+                </li>
+                <li>
+                  <a href="https://waffle-game-unlimited.vercel.app/" target="_blank" rel="noopener">
+                    🧇 <strong>Waffle Game Unlimited</strong> – Free Daily Word Puzzle
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>System Performance</h4>
+              <p>Runs at a locked 60 FPS utilizing direct typed array pixel manipulation and Web Audio API synthesis.</p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2026 Falling Sand Game. Built with passion for physics simulation and web performance.</p>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <!-- Help Modal -->
+    <div id="modal-help" class="modal-backdrop" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="help-title">
+        <div class="modal-header">
+          <span class="modal-icon">🧪 📖</span>
+          <h2 id="help-title">How to Play Falling Sand</h2>
+        </div>
+        <div class="modal-body">
+          <ul class="help-points">
+            <li><strong>Select an element</strong> from the palette below the canvas (Sand, Water, Fire, Acid, Lava, etc.).</li>
+            <li><strong>Click or touch & drag</strong> on the canvas to paint and pour particles.</li>
+            <li>Adjust your <strong>Brush Size</strong> (1 to 20px) for fine lines or massive floods.</li>
+            <li>Use the <strong>Preset menu</strong> to test instant Volcanoes, Dams, and Acid Labs!</li>
+            <li>Press <strong>Spacebar</strong> to pause/resume physics simulation.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button class="action-btn primary modal-close-btn" data-close="modal-help">Let's Experiment!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

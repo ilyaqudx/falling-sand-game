@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://falling-sand-game.vercel.app/sitemap.xml

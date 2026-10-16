@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1e24"/>
+      <stop offset="100%" stop-color="#121214"/>
+    </linearGradient>
+    <linearGradient id="sandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#fde047" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Background Rounded Shield -->
+  <rect x="6" y="6" width="88" height="88" rx="20" fill="url(#bgGrad)" stroke="#3f3f46" stroke-width="2.5"/>
+
+  <!-- Funnel Hourglass Geometry -->
+  <path d="M26 24 H74 L54 48 L74 76 H26 L46 48 Z" fill="none" stroke="#94a3b8" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- Top Sand Pool -->
+  <polygon points="32,28 68,28 53,46 47,46" fill="url(#sandGrad)" filter="url(#glow)"/>
+
+  <!-- Trickling Stream -->
+  <line x1="50" y1="46" x2="50" y2="62" stroke="#fde047" stroke-width="2.5" stroke-dasharray="2,2"/>
+
+  <!-- Bottom Sand Pile & Water Wave -->
+  <path d="M30 73 Q 50 60 70 73 Z" fill="url(#sandGrad)"/>
+  <circle cx="68" cy="40" r="5" fill="url(#waterGrad)"/>
+  <circle cx="32" cy="62" r="4" fill="#ef4444"/>
+</svg>
